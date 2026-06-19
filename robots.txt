@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shahn96.github.io/cnsite-i-game-com-cn/sitemap.xml
