@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gg扑克 · 站点介绍与知识库</title>
+  <style>
+    /* 重置 & 全局 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f1f3f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2d2f33;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrap {
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    /* 英雄区 —— 克制叙述 */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e6e9ed;
+    }
+
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f2328;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.05rem;
+      color: #4b5058;
+      max-width: 70%;
+      line-height: 1.5;
+      border-left: 3px solid #b0b8c1;
+      padding-left: 1.25rem;
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 1.8rem 1.2rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .hero .subhead { max-width: 100%; font-size: 0.95rem; padding-left: 1rem; }
+    }
+
+    /* 卡片网格 —— 目录感布局 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 540px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.5rem;
+      border: 1px solid #e2e6ec;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1f2328;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid #edf0f3;
+      padding-bottom: 0.4rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #3d434b;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.3rem;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #88909b;
+      font-weight: 500;
+    }
+
+    /* 提示区（醒目但温和） */
+    .notice-area {
+      background: #f8faff;
+      border: 1px solid #dde3ec;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.6rem 1.2rem;
+    }
+
+    .notice-area .label {
+      background: #eef2f7;
+      padding: 0.25rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #3f4855;
+      white-space: nowrap;
+    }
+
+    .notice-area .content {
+      font-size: 0.98rem;
+      color: #2d333b;
+      flex: 1;
+    }
+
+    .notice-area a {
+      color: #2d4f7c;
+      text-decoration: none;
+      border-bottom: 1px solid #bcc9db;
+      transition: border-color 0.15s;
+    }
+
+    .notice-area a:hover {
+      border-bottom-color: #2d4f7c;
+    }
+
+    /* 相关信息区 —— FAQ 摘要风格 */
+    .info-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem 1.8rem;
+      border: 1px solid #e2e6ec;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      margin-bottom: 1.8rem;
+    }
+
+    .info-section h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #1f2328;
+    }
+
+    .faq-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #252a30;
+      margin-bottom: 0.15rem;
+      font-size: 1rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.95rem;
+      color: #4a5059;
+      padding-left: 0.2rem;
+    }
+
+    .faq-item .a a {
+      color: #2d4f7c;
+      text-decoration: none;
+      border-bottom: 1px solid #d0d8e3;
+    }
+
+    .faq-item .a a:hover {
+      border-bottom-color: #1e3a5f;
+    }
+
+    /* 脚注 — 干净 */
+    .footnote {
+      text-align: left;
+      font-size: 0.85rem;
+      color: #7c8490;
+      border-top: 1px solid #dfe3e9;
+      padding-top: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e4e8ee;
+      margin: 0.8rem 0;
+    }
+
+    /* 简单响应式微调 */
+    @media (max-width: 480px) {
+      body { padding: 1.2rem 1rem; }
+      .notice-area { padding: 1.2rem 1rem; flex-direction: column; gap: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- hero 区：从站点介绍与可信说明的角度 -->
+    <div class="hero">
+      <h1>关于 gg扑克 · 信息索引</h1>
+      <div class="subhead">
+        一个偏向于知识整理的微型入口，记录与 <a href="https://site-ggpoker.com" style="color:#2d4f7c; text-decoration:none; border-bottom:1px solid #c0cbdb;">gg扑克</a> 相关的站点背景、功能要点以及常见疑问的摘要。
+      </div>
+    </div>
+
+    <!-- 三列卡片：目录感布局：说明区、提示区、相关信息区（但我们将提示区独立放置，卡片以目录/要点为主） -->
+    <div class="card-grid">
+      <div class="card">
+        <h2>站点简述</h2>
+        <p>该平台围绕线上扑克场景搭建，提供多种游戏模式与基础资讯。站内信息涵盖规则、策略参考以及社区讨论。整体定位偏向于实用信息聚合，非官方客户端，更多扮演资料与导航角色。</p>
+        <p style="margin-top: 0.6rem;">若你希望直接了解当前内容，可参考站内索引页；或通过 <a href="https://site-ggpoker.com" style="color:#2d4f7c; text-decoration:none; border-bottom:1px solid #c0cbdb;">gg扑克</a> 主站进一步浏览。</p>
+      </div>
+      <div class="card">
+        <h2>常见功能场景</h2>
+        <ul>
+          <li>游戏类型说明与规则档案</li>
+          <li>术语表与新手常见问题</li>
+          <li>线上赛事结构简介</li>
+          <li>策略文章与牌局复盘</li>
+          <li>社区讨论与牌局记录</li>
+        </ul>
+        <p style="margin-top: 0.6rem; font-size:0.9rem; color:#58606b;">以上分类仅为概括，具体内容以站内实际页面为准。</p>
+      </div>
+      <div class="card">
+        <h2>信息可靠性说明</h2>
+        <p>本站内容来自公开整理与用户反馈，不保证绝对完整。所有涉及游戏规则、策略或赛事的部分，建议结合官方渠道或<a href="https://site-ggpoker.com" style="color:#2d4f7c; text-decoration:none; border-bottom:1px solid #c0cbdb;">gg扑克</a>站内公告交叉验证。页面无意提供投资或赌博建议，仅作知识参考。</p>
+      </div>
+    </div>
+
+    <!-- 提示区（独立） -->
+    <div class="notice-area">
+      <span class="label">📌 提示</span>
+      <span class="content">
+        本页面为静态介绍页，不记录个人数据，不设跳转追踪。所有指向 <a href="https://site-ggpoker.com">gg扑克</a> 的链接均直接导向其首页，请自行甄别信息时效。
+      </span>
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要风格 -->
+    <div class="info-section">
+      <h2>常见疑问 · 摘要</h2>
+      <div class="faq-item">
+        <div class="q">这个站点是官方平台吗？</div>
+        <div class="a">不是。该站点是一个信息集合与导航入口，并非由官方运营。相关内容由爱好者或社区维护，与官方无直接隶属关系。你可以直接浏览 <a href="https://site-ggpoker.com">gg扑克</a> 以查看最新信息。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">内容是否定期更新？</div>
+        <div class="a">站内部分页面会随社区反馈调整，但无法保证所有文章都是最新版本。策略类内容尤其具有时效性，建议结合当前环境阅读。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">是否需要注册或下载？</div>
+        <div class="a">本介绍页无需任何操作。至于站内是否提供下载链接或注册引导，请直接查阅 <a href="https://site-ggpoker.com">gg扑克</a> 对应页面上的说明。</div>
+      </div>
+      <hr>
+      <p style="font-size:0.9rem; color:#58606b; margin-top:0.2rem;">更多条目可参考站点目录，此处仅摘录三个典型。</p>
+    </div>
+
+    <!-- 简洁脚注 -->
+    <div class="footnote">
+      内容参考 · 基于公开资料整理 · 无任何诱导表述
+    </div>
+  </div>
+</body>
+</html>
