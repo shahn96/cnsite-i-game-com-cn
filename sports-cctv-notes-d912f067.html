@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA直播 · 信息整理与索引笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: #f2f4f6;
+            color: #1e1f26;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        /* 卡片通用样式 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid #e4e7ec;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        /* 开场短句 —— 类似引言的标记 */
+        .opening {
+            background: #f9fafb;
+            border-left: 5px solid #6d7a8a;
+            padding: 1.8rem 2rem;
+            border-radius: 14px;
+            margin-bottom: 1.8rem;
+            font-size: 1.15rem;
+            letter-spacing: 0.01em;
+            border: 1px solid #e1e5eb;
+            border-left-width: 6px;
+            color: #2e3643;
+        }
+
+        .opening strong {
+            font-weight: 550;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 520;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+            color: #1b212b;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 480;
+            margin: 1.6rem 0 0.8rem 0;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid #e7eaef;
+            padding-bottom: 0.35rem;
+            color: #2a3341;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 520;
+            margin: 1.2rem 0 0.6rem 0;
+            color: #304050;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: #2b5f8a;
+            text-decoration: none;
+            border-bottom: 1px dotted #bccbd9;
+            transition: border-bottom 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #183b57;
+            border-bottom: 1px solid #2b5f8a;
+        }
+
+        /* 特点列表 —— 清晰整理风格 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.8rem;
+            margin: 1.4rem 0 0.6rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .feature-grid li {
+            flex: 1 1 200px;
+            background: #f7f9fc;
+            padding: 0.9rem 1.2rem;
+            border-radius: 14px;
+            border: 1px solid #e1e6ed;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            font-size: 0.98rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem 0.6rem;
+        }
+
+        .feature-grid li::before {
+            content: "▹";
+            color: #54738f;
+            font-weight: 400;
+            margin-right: 0.3rem;
+        }
+
+        .note-box {
+            background: #f3f6fa;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.2rem 0;
+            border: 1px solid #dce2ec;
+            font-size: 0.95rem;
+        }
+
+        .divider {
+            margin: 1.8rem 0 1.2rem 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4dbe3, transparent);
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-question {
+            font-weight: 510;
+            color: #2c3b4e;
+        }
+
+        .footer-note {
+            margin-top: 2.2rem;
+            padding: 1.2rem 0 0.2rem 0;
+            border-top: 1px solid #dce2eb;
+            font-size: 0.9rem;
+            color: #4f5b6b;
+            text-align: center;
+        }
+
+        @media (max-width: 540px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .card {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .opening {
+                padding: 1.2rem 1.2rem;
+                font-size: 1rem;
+            }
+            .feature-grid li {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        <strong>整理，是为了一次次更快的索引。</strong> 
+        在比赛密集的日程里，把直播源、赛程、球队动态归拢到一起，比频繁切换标签页更省心力。
+    </div>
+
+    <!-- 主卡片：叙述与索引说明 -->
+    <div class="card">
+        <h1>NBA直播 · 资料整理笔记</h1>
+        <p>
+            这里是围绕 <a href="https://sports-cctv-nba.com">NBA直播</a> 所做的一份信息归档页——不堆砌口号，只把常见的问题、频道特点以及使用场景用平实的语言列出来。如果你也习惯在赛前先快速扫一眼要点，下面的条目或许能省下一点检索时间。
+        </p>
+        <p>
+            从常规赛到季后赛，转播平台、时间、回放入口经常变化。把零散的说明收拢在同一张卡片里，是我为自己（也为偶尔路过的读者）准备的索引起点。
+        </p>
+
+        <h2>整理时发现的特点</h2>
+        <ul class="feature-grid">
+            <li>赛程时间与直播入口集中列出</li>
+            <li>多路信号来源（含备用流）</li>
+            <li>支持赛后集锦与回放片段</li>
+            <li>页面结构偏轻，减少广告干扰</li>
+            <li>周末及焦点战通常会提前放出预览</li>
+            <li>手机端适配较完整，横竖屏均可</li>
+        </ul>
+
+        <div class="note-box">
+            <strong>提示：</strong> 部分比赛因版权或地区限制，直播源可能临时调整。建议开赛前10分钟刷新确认链接状态。
+        </div>
+
+        <!-- 场景段落 -->
+        <h3>常见使用场景</h3>
+        <p>
+            · 工作日晚间打开 <a href="https://sports-cctv-nba.com">NBA直播</a> 首页，扫一眼当天赛程，然后决定看哪一场的第四节。<br>
+            · 周末用平板挂在支架上，同时打开数据统计页面——直播流当作背景音，实时比分用单独窗口查看。<br>
+            · 偶尔遇到源失效，可以通过页面提供的备用线路快速切换，不需要重新搜索。<br>
+            · 赛后想确认某个进球，直接找到对应比赛的回放板块，不必翻找第三方集锦站。
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- FAQ 摘要 部分 -->
+        <h2>FAQ 摘要</h2>
+
+        <div class="faq-item">
+            <p class="faq-question">直播源稳定吗？</p>
+            <p>根据日常使用反馈，主线路在非极端网络条件下比较流畅。高峰时段（例如圣诞大战、分区决赛）建议准备两个备用线路。页面内一般会附带切换选项。</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">需要注册或登录吗？</p>
+            <p>访问首页直接浏览赛程和直播入口，不需要注册账户。部分回放或高清源可能嵌入第三方播放器，各平台规则不同。</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">手机端体验如何？</p>
+            <p>列表式布局，文字大小适中，直播链接用按钮形式呈现。竖屏时赛程按日期折叠，横屏可同时看到更多场次信息。</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">如何最快找到今天的第一场比赛？</p>
+            <p>页面顶部通常会固定「今日赛程」模块，按开赛时间排序。如果刚好是凌晨场次，日期标注会特别高亮。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾卡片 -->
+    <div class="card" style="background: #fafcfd;">
+        <p style="margin-bottom: 0.4rem;">
+            这份索引基于日常使用逐步增补，不保证覆盖所有场次或平台。如果你有更好的整理方式或发现过时的链接，欢迎随手更新自己的笔记。
+        </p>
+        <p style="color: #3f5066;">
+            <a href="https://sports-cctv-nba.com">NBA直播</a> 本身是一个起点，而记录和筛选，才是让信息真正可用的习惯。
+        </p>
+        <div class="footer-note">
+            · 最近一次更新：2025 · 资料整理向页面 ·
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
